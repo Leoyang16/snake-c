@@ -1,0 +1,158 @@
+Pseudocodigo
+
+----------------------Declarar global------------------------
+Entero ancho=40
+Entero alto=20
+Entero x,y
+Entero frutax,frutay
+Entero puntaje
+Entero arreglo colax[40],colay[20]
+Entero ncola
+Lista Imputs {ALTO,ARRIBA,ABAJO,IZQUIERDA,DERECHA}
+Lista Imputs mov
+Boleano gameover=false
+-------------------------------------------------------------
+
+Funcion vacia Inicio()
+	Inicializargeneradoraleatorio(TiempoActual)
+	mov=Alto
+	x=ancho/2
+	y=alto/2
+	frutax=aleatorio()%(ancho-2)+1
+	frutay=aleatorio()%alto
+	puntaje=0
+	ncola=0
+Fin funcion
+
+Funcion vacia Dibujar()
+	Borrar pantalla
+	Entero i,j,k
+	Imprimir "Puntuaje: puntuaje\n"
+	Para i=0 hasta i<ancho de 1 en 1 hacer
+		Imprimir "#"
+	Imprimir "\n"
+	Para i=0 hasta i<alto de 1 en 1 hacer
+		Para j=0 hasta j<ancho de 1 en 1 hacer
+			Si j==0 o j==ancho-1 entonces
+				Imprimir "#"
+			Fin si
+
+			Si i==y yy j==x entonces 
+				imprimir "O"
+			Fin si
+
+			Si i==frutay yy j==frutax entonces
+				Imprimir "a"
+			Fin si
+
+			Booleano imp=false
+			Para k=1 hasta k<=ncola de 1 en 1 hacer
+				Si colax[k]==j yy colay[k]==i hacer
+					Imprimir "o"
+					imp=true
+					Romper
+				FIn si
+			Fin Para
+			Si ¬impc
+				Imprimir " "
+			Fin si
+		Fin para
+		Imprimir "\n"
+	Fin para
+
+	Para i=0 hasta i<ancho de 1 en 1 hacer
+		Imprimir "#"
+	Fin para
+	Imprimir "\n"
+Fin Funcion					
+
+Funcion vacia Entradas() 
+	Si teclapresionada() entonces
+		Segun consultartecla() entonces
+			'a':
+				mov=IZQUIERDA
+				Romper
+			'd':
+				mov=DERECHA
+				Romper
+			'w':
+				mov=ARRIBA
+				Romper
+			's':
+				mov=ABAJO
+				Romper
+		Fin segun
+	Fin si
+Fin Funcion
+
+Funcion booleana Logica() 
+	Booleano fin=false
+	Entero temp1x=colax[0]
+	Entero temp1y=colay[0]
+	Entero temp2x,temp2y
+	Entero i
+	colax[0]=x
+	colay[0]=y
+
+	Para i=1 hasta i<ncola de 1 en 1 hacer
+		temp2x=colax[i]
+		temp2y=colay[i]
+		colax[i]=temp1x
+		colay[i]=temp1y
+		temp1x=temp2x
+		temp1y=temp2y
+	Fin para
+	
+	Segun mov hacer
+		DERECHA:
+			x++
+			Romper
+		IZQUIERDA:
+			x--
+			Romper
+		ARRIBA:
+			y--
+			Romper
+		ABAJO:
+			y++
+			Romper
+		De otro modo:
+			Romper
+	Fin segun
+
+	Si x<0 o x>=ancho-1 o y<0 o y>=alto hacer
+		fin=true
+	Fin si
+
+	Para i=1 hasta i<=ncola de 1 en 1 hacer
+		Si colax[i]==x yy colay[i]==y hacer
+			fin=true
+			Romper
+		Fin si
+	Fin para
+
+	Si x==frutax yy y==frutay hacer
+		puntuaje++
+		frutax=aleatorio()%(ancho-2)+1
+		frutay=aleatorio()%alto
+		ncola++
+	Fin si
+
+	Retornar fin
+Fin funcion
+
+---------------------------------------------------------------------------
+MAIN
+
+Entero main ()
+	Inicio()
+	Booleano gameover=false
+	Hacer que gameover==false
+		Dibujar()
+	 	Entradas()
+		gameover=Logica()
+		Descanso de 200 
+	Imprimir "\nFIN DEL JUEGO!\n"
+	Retornar 0
+Fin main
+	

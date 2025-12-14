@@ -1,0 +1,42 @@
+Tablero
+#####################  ########################################
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#                   #  #                                      #
+#####################  ########################################
+ 
+
+Serpiente
+O <-cabeza
+o <-cuerpo
+
+Oooooooooooo <-integrado de cabeza y cola
+
+Controles
+Arriba: W
+Abajo: S
+Izquierda: A
+Derecha: D
+
+Fruta
+a <-Manzana
+
+Detectar entradas:
+kbhit() <-tecla presionada
+getch() <-consultar tecla
